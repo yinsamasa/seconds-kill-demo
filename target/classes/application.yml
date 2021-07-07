@@ -1,0 +1,27 @@
+server:
+  port: 8090
+
+
+spring:
+  datasource:
+    type: com.alibaba.druid.pool.DruidDataSource
+    driver-class-name: com.mysql.cj.jdbc.Driver
+    url: jdbc:mysql://localhost:3306/lyf?useUnicode=true&characterEncoding=utf8&serverTimezone=GMT
+    username: root
+    password: root
+  kafka:
+    bootstrap-servers: localhost:9092
+    consumer:
+      # consumer group-id
+      group-id: seconds-kill
+    template:
+      # ָ�� topic id
+      default-topic: SECONDS-KILL-TOPIC
+    listener:
+      # �����е��߳�����������߲�������
+      concurrency: 3
+
+#��־
+logging:
+  file:
+    name: secondkill.log
